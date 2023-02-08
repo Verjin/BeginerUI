@@ -1,0 +1,33 @@
+import SwiftUI
+
+struct SubmitTextFieldUI: View {
+    
+    @State private var text: String = ""
+    
+    var body: some View {
+        VStack {
+            TextField("Hello, World!",text: $text)
+                .submitLabel(.route)
+                .onSubmit {
+                    print("Something to the console!")
+                }
+            TextField("Hello, World!",text: $text)
+                .submitLabel(.next)
+                .onSubmit {
+                    print("Something to the console!")
+                }
+            TextField("Hello, World!",text: $text)
+                .submitLabel(.search)
+                .onSubmit {
+                    print("Something to the console!")
+                }
+        }
+        .padding()
+    }
+}
+
+struct SubmitTextFieldUI_Previews: PreviewProvider {
+    static var previews: some View {
+        SubmitTextFieldUI()
+    }
+}

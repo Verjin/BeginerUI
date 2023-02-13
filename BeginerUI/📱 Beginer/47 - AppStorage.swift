@@ -4,29 +4,27 @@ struct AppStorageUI: View {
     
     
     @AppStorage("name") var currentUserName: String?
+    @State var title: String = ""
     
     var body: some View {
         VStack(spacing: 20) {
             Text(currentUserName ?? "Add Name Here")
             
-            if let name = currentUserName {
-                Text(name)
-            }
+//            if let name = currentUserName {
+//                Text(name)
+//            }
+             
+            TextField("Add", text: $title)
+                .textFieldStyle(.roundedBorder)
+                .padding()
             
             Button {
-                let name: String = "Vlad"
+                let name = title
                 currentUserName = name
-                UserDefaults.standard.set(name, forKey: "name")
             } label: {
                 Text("save".uppercased())
             }
-
         }
-        .onAppear {
-            currentUserName = UserDefaults.standard.string(forKey: "name")
-        }
-       
-        
     }
 }
 
